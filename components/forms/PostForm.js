@@ -8,7 +8,7 @@ const initialState = {
   title: '',
   imageUrl: '',
   content: '',
-  approved: true,
+  approved: 'MQ==',
 };
 
 export default function PostForm({
@@ -101,7 +101,7 @@ PostForm.propTypes = {
   publicationDate: PropTypes.string,
   imageUrl: PropTypes.string,
   content: PropTypes.string,
-  approved: PropTypes.bool,
+  approved: PropTypes.string,
 };
 
 PostForm.defaultProps = {
@@ -110,5 +110,5 @@ PostForm.defaultProps = {
   publicationDate: '',
   imageUrl: '',
   content: '',
-  approved: true,
+  approved: 'MQ==',
 };
