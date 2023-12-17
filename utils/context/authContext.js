@@ -30,6 +30,8 @@ const AuthProvider = (props) => {
     [oAuthUser],
   );
 
+  console.warn(checkUser);
+
   useEffect(() => {
     firebase.auth().onAuthStateChanged((fbUser) => {
       if (fbUser) {
