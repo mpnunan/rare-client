@@ -6,7 +6,14 @@ import { registerUser } from '../utils/auth'; // Update with path to registerUse
 
 function RegisterForm({ user, updateUser }) {
   const [formData, setFormData] = useState({
+    first_name: '',
+    last_name: '',
     bio: '',
+    profile_image_url: '',
+    email: '',
+    created_on: Date.now(),
+    active: true,
+    is_staff: true,
     uid: user.uid,
   });
 
@@ -18,9 +25,17 @@ function RegisterForm({ user, updateUser }) {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Gamer Bio</Form.Label>
+        <Form.Label>Scholarly First Name</Form.Label>
+        <Form.Control type="text" name="first_name" required placeholder="Enter your First Name" onChange={({ target }) => setFormData((prev) => ({ ...prev, [target.name]: target.value }))} />
+        <Form.Label>Scholarly Last Name</Form.Label>
+        <Form.Control type="text" name="last_name" required placeholder="Enter your Last Name" onChange={({ target }) => setFormData((prev) => ({ ...prev, [target.name]: target.value }))} />
+        <Form.Label>Scholarly Headshot</Form.Label>
+        <Form.Control type="url" name="profile_image_url" required placeholder="Link a photo" onChange={({ target }) => setFormData((prev) => ({ ...prev, [target.name]: target.value }))} />
+        <Form.Label>Scholarly Email Address</Form.Label>
+        <Form.Control type="email" name="email" required placeholder="We'll totally not send you adds" onChange={({ target }) => setFormData((prev) => ({ ...prev, [target.name]: target.value }))} />
+        <Form.Label>Scholarly Bio</Form.Label>
         <Form.Control as="textarea" name="bio" required placeholder="Enter your Bio" onChange={({ target }) => setFormData((prev) => ({ ...prev, [target.name]: target.value }))} />
-        <Form.Text className="text-muted">Let other gamers know a little bit about you...</Form.Text>
+        <Form.Text className="text-muted">Let other book nuts know a little bit about you...</Form.Text>
       </Form.Group>
       <Button variant="primary" type="submit">
         Submit
@@ -32,6 +47,8 @@ function RegisterForm({ user, updateUser }) {
 RegisterForm.propTypes = {
   user: PropTypes.shape({
     uid: PropTypes.string.isRequired,
+    photoURL: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
   }).isRequired,
   updateUser: PropTypes.func.isRequired,
 };
