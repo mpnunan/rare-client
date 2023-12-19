@@ -15,6 +15,11 @@ const createTag = async (payload) => {
   return tag.data;
 };
 
+const createPostTag = async (payload) => {
+  const postTag = await rare.post('/posttags', payload);
+  return postTag.data;
+};
+
 const updateTag = async (id, payload) => {
   const tag = await rare.put(`/tags/${id}`, payload);
   return tag.data;
@@ -31,4 +36,5 @@ export {
   createTag,
   updateTag,
   deleteTag,
+  createPostTag,
 };
