@@ -6,10 +6,8 @@ import {
   Container,
   Nav,
   Button,
-  Image,
 } from 'react-bootstrap';
 import { signOut } from '../../utils/auth';
-import Logo from './books2.jpeg';
 
 export default function NavBar() {
   return (
@@ -17,7 +15,7 @@ export default function NavBar() {
       <Container>
         <Link passHref href="/">
           <Navbar.Brand>
-            <Image src={Logo} alt="Books Logo" /> <h1 className="title is-4">Reading Realm</h1>
+            <h1 className="title is-4">📚Reading Realm</h1>
           </Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
