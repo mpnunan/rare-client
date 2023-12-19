@@ -1,4 +1,5 @@
 @import 'bootstrap/dist/css/bootstrap.css';
+@import url('https://fonts.googleapis.com/css2?family=Nabla&family=Urbanist:wght@300;700&display=swap');
 
 html,
 body {
@@ -18,5 +19,28 @@ a {
 }
 
 body {
-  background-color: #88effd;
+  background-color: #e48b6b;
+  font-family: Urbanist;
+}
+
+img {
+  padding: 25px !important;
+}
+
+#navbar {
+  background-color: #6d6875!important;
+  font-weight: 700;
+  margin-bottom: 35px;
+  border-bottom: 15px solid #ffe175;
+}
+
+button {
+  background-color: #46434c !important;
+  border: #6d6875 solid 1px !important;
+}
+
+#navTitle {
+  font-family: Nabla !important;
+  font-size: 70px;
+  padding: 10px;
 }
