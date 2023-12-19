@@ -1,7 +1,7 @@
 import rare from '../axiosConfig';
 
-const getAllTags = async () => {
-  const tags = await rare.get('/tags');
+const getAllTags = async (postId) => {
+  const tags = await rare.get(`/tags?post_id=${postId}`);
   return Object.values(tags.data);
 };
 
@@ -30,6 +30,11 @@ const deleteTag = async (id) => {
   return tag.data;
 };
 
+const getTagsForSinglePost = async (postId) => {
+  const tags = await rare.get(`/tags?post_id=${postId}`);
+  return Object.values(tags.data);
+};
+
 export {
   getAllTags,
   getSingleTag,
@@ -37,4 +42,5 @@ export {
   updateTag,
   deleteTag,
   createPostTag,
+  getTagsForSinglePost,
 };

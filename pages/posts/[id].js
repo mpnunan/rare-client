@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -8,10 +7,12 @@ import { useAuth } from '../../utils/context/authContext';
 import Comment from '../../components/comments/Comment';
 import CommentForm from '../../components/forms/CommentForm';
 import { getPostComments } from '../../utils/data/commentRequests';
+import { getTagsForSinglePost } from '../../utils/data/tagRequests';
 
 function ViewPost() {
   const [postDetails, setPostDetails] = useState({});
   const [comments, setComments] = useState([]);
+  const [tags, setTags] = useState([]); // State to store post tags
   const router = useRouter();
   const { user } = useAuth();
   const { id } = router.query ?? {};
@@ -23,7 +24,11 @@ function ViewPost() {
   useEffect(() => {
     getSinglePost(id, user.uid)
       .then(setPostDetails)
-      .then(getAllComments);
+      .then(getAllComments)
+      .then(() => {
+        getTagsForSinglePost(id)
+          .then((data) => setTags(data)); // Update the tags state with the fetched tags
+      });
   }, [id]);
 
   return (
@@ -61,6 +66,15 @@ function ViewPost() {
             />
           </section>
         ))}
+      </div>
+      {/* Render Tags */}
+      <div className="post-details-cont">
+        <h2 className="post-tags-title">Tags</h2>
+        <div>
+          {tags.map((tag) => (
+            <div key={tag.id}>{tag.label}</div>
+          ))}
+        </div>
       </div>
     </>
   );

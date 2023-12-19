@@ -1,13 +1,9 @@
-// / DetailsPageComponent.js
-
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import PostForm from './forms/PostForm';
 import CommentForm from './forms/CommentForm';
-import TagForm from './forms/TagForm';
 import { getSinglePost } from '../utils/data/postRequests';
 import { getSingleComment } from '../utils/data/commentRequests';
-import { getAllTags } from '../utils/data/tagRequests';
 import { useAuth } from '../utils/context/authContext';
 
 export default function DetailsPageComponent() {
@@ -17,14 +13,16 @@ export default function DetailsPageComponent() {
   const [post, setPost] = useState({});
   const [comments, setComments] = useState([]);
   const [tags, setTags] = useState([]);
-
   const auth = useAuth();
 
   useEffect(() => {
     if (postId) {
-      getSinglePost(postId).then((postDetails) => setPost(postDetails));
+      getSinglePost(postId).then((postDetails) => {
+        console.log(postDetails);
+        setPost(postDetails);
+        setTags(postDetails.tags || []);
+      });
       getSingleComment(postId).then((commentsList) => setComments(commentsList));
-      getAllTags().then((tagsList) => setTags(tagsList));
     }
   }, [postId]);
 
@@ -39,9 +37,11 @@ export default function DetailsPageComponent() {
       ))}
       <hr />
       <h2>Tags</h2>
-      {tags.map((tag) => (
-        <TagForm key={tag.id} {...tag} />
-      ))}
+      <div>
+        {tags.map((tag) => (
+          <div key={tag.id}>{tag.label}</div>
+        ))}
+      </div>
     </div>
   );
 }
