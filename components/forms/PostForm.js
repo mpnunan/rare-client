@@ -52,7 +52,7 @@ export default function PostForm({
     if (id) {
       updatePost(id, currentPost).then(() => router.push('/'));
     } else {
-      createPost({ ...currentPost, publicationDate: rightNow, rareUserId: user.uid }).then(() => router.push('/'));
+      createPost({ ...currentPost, publicationDate: rightNow, rareUserId: user.uid }).then(() => router.push('/posts'));
     }
   };
 

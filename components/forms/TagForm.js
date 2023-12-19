@@ -3,17 +3,17 @@ import { useRouter } from 'next/router';
 import { Button, Form } from 'react-bootstrap';
 import { createTag } from '../../utils/data/tagRequests';
 
-const initialDescription = {
-  description: '',
+const initialLabel = {
+  label: '',
 };
 
 export default function TagForm() {
-  const [description, setDescription] = useState(initialDescription);
+  const [label, setLabel] = useState(initialLabel);
   const router = useRouter();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setDescription((prevState) => ({
+    setLabel((prevState) => ({
       ...prevState,
       [name]: value,
     }));
@@ -21,7 +21,7 @@ export default function TagForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createTag(description).then(() => router.push('/'));
+    createTag(label).then(() => router.push('/tags'));
   };
 
   return (
@@ -29,9 +29,9 @@ export default function TagForm() {
       <Form.Group className="mb-3">
         <Form.Label>Apparently we need more tags</Form.Label>
         <Form.Control
-          name="description"
+          name="label"
           type="text"
-          value={description}
+          value={label.label}
           onChange={handleChange}
           required
         />
