@@ -21,7 +21,7 @@ export default function CommentForm({
   useEffect(() => {
     if (id) {
       setComment({
-        authorId: user.uid,
+        userId: user.uid,
         postId,
         content,
         createdOn,
@@ -39,15 +39,18 @@ export default function CommentForm({
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formattedDate = new Date().toISOString().split('T')[0];
+
+    const commentDataToSend = {
+      ...comment,
+      created_on: id ? comment.createdOn : formattedDate,
+      userId: user.uid,
+      post: postId,
+    };
     if (id) {
-      updateComment(id, comment).then(() => router.push('/'));
+      updateComment(id, commentDataToSend).then(() => router.push('/'));
     } else {
-      createComment({
-        ...comment,
-        createdOn: Date.now(),
-        authorId: user.uid,
-        postId,
-      }).then(() => router.push('/'));
+      createComment(commentDataToSend).then(() => router.push('/'));
     }
   };
 
@@ -76,7 +79,7 @@ CommentForm.propTypes = {
     uid: PropTypes.string.isRequired,
   }).isRequired,
   id: PropTypes.string,
-  postId: PropTypes.string.isRequired,
+  postId: PropTypes.number.isRequired,
   content: PropTypes.string,
   createdOn: PropTypes.string,
 };
