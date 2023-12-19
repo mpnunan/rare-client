@@ -11,6 +11,9 @@ const initialState = {
   approved: 'MQ==',
 };
 
+const now = new Date();
+const rightNow = now.toISOString().substring(0, 10);
+
 export default function PostForm({
   user,
   id,
@@ -49,7 +52,7 @@ export default function PostForm({
     if (id) {
       updatePost(id, currentPost).then(() => router.push('/'));
     } else {
-      createPost({ ...currentPost, publicationDate: Date.now(), rareUserId: user.uid }).then(() => router.push('/'));
+      createPost({ ...currentPost, publicationDate: rightNow, rareUserId: user.uid }).then(() => router.push('/'));
     }
   };
 

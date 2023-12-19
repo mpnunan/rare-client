@@ -13,7 +13,7 @@ export default function TagSection({ tags }) {
 
 TagSection.propTypes = {
   tags: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     label: PropTypes.string.isRequired,
   }).isRequired).isRequired,
 };
