@@ -5,32 +5,32 @@ import { Card, Button } from 'react-bootstrap';
 
 function PostCard({ postObj }) {
   return (
-    <Card className="post-card" style={{ width: '18rem', margin: '10px' }}>
-      <Card.Img variant="top" src={postObj.image_url} alt={postObj.title} style={{ height: '300px' }} />
-      <Card.Body className="post-content" style={{ height: '250px' }}>
+    <Card
+      className="post-card"
+      style={{
+        width: '18rem', margin: '20px', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)', borderRadius: '10px',
+      }}
+    >
+      <Card.Img variant="top" src={postObj.image_url} alt={postObj.title} style={{ height: '300px', borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }} />
+      <Card.Body className="post-content" style={{ height: '200px' }}>
         <h5>{postObj.title}</h5>
         <p className="text-muted">{postObj.publication_date}</p>
         <p>{postObj.content}</p>
       </Card.Body>
       <Link href={`/posts/${postObj.id}`} passHref>
-        <Button style={{ backgroundColor: '#023e8a', marginBottom: '20px', width: '100%' }}>View Post</Button>
+        <Button>View Post</Button>
       </Link>
     </Card>
   );
 }
+
 PostCard.propTypes = {
   postObj: PropTypes.shape({
-    id: PropTypes.number,
+    id: PropTypes.number.isRequired,
     title: PropTypes.string,
     image_url: PropTypes.string,
     publication_date: PropTypes.string,
     content: PropTypes.string,
-    username: PropTypes.string,
-    user: PropTypes.shape({ // Update this to define the structure of the user object
-      first_name: PropTypes.string,
-      last_name: PropTypes.string,
-      // Include other properties of the user object here if there are any
-    }),
   }).isRequired,
 };
 
