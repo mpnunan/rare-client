@@ -15,8 +15,14 @@ const createTag = async (payload) => {
   return tag.data;
 };
 
+const createPostTag = async (payload) => {
+  const postTag = await rare.post('/posttags', payload);
+  return postTag.data;
+};
+
 export {
   getAllTags,
   getSingleTag,
   createTag,
+  createPostTag,
 };

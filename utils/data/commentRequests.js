@@ -1,5 +1,10 @@
 import rare from '../axiosConfig';
 
+const getPostComments = async (postId) => {
+  const postComments = await rare.get(`comments?post=${postId}`);
+  return Object.values(postComments.data);
+};
+
 const getSingleComment = async (id) => {
   const comment = await rare.get(`/comments/${id}`);
   return comment.data;
@@ -20,6 +25,7 @@ const deleteComment = async (id) => {
   return deletedComment.data;
 };
 export {
+  getPostComments,
   getSingleComment,
   createComment,
   updateComment,
