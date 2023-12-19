@@ -1,14 +1,14 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Form } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { createPost, updatePost } from '../../utils/data/postRequests';
 
 const initialState = {
   title: '',
   imageUrl: '',
   content: '',
-  approved: true,
+  approved: 'MQ==',
 };
 
 export default function PostForm({
@@ -87,6 +87,9 @@ export default function PostForm({
           required
         />
       </Form.Group>
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
     </Form>
 
   );
@@ -101,7 +104,7 @@ PostForm.propTypes = {
   publicationDate: PropTypes.string,
   imageUrl: PropTypes.string,
   content: PropTypes.string,
-  approved: PropTypes.bool,
+  approved: PropTypes.string,
 };
 
 PostForm.defaultProps = {
@@ -110,5 +113,5 @@ PostForm.defaultProps = {
   publicationDate: '',
   imageUrl: '',
   content: '',
-  approved: true,
+  approved: 'MQ==',
 };
