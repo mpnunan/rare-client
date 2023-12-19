@@ -9,7 +9,7 @@ import {
   Image,
 } from 'react-bootstrap';
 import { signOut } from '../../utils/auth';
-import Logo from './books.jpeg';
+import Logo from './books2.jpeg';
 
 export default function NavBar() {
   return (
@@ -17,14 +17,14 @@ export default function NavBar() {
       <Container>
         <Link passHref href="/">
           <Navbar.Brand>
-            <Image src={Logo} height="3rem" alt="Rare Logo" /> <h1 className="title is-4">Reading Realm</h1>
+            <Image src={Logo} alt="Books Logo" /> <h1 className="title is-4">Reading Realm</h1>
           </Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             {/* CLOSE NAVBAR ON LINK SELECTION: https://stackoverflow.com/questions/72813635/collapse-on-select-react-bootstrap-navbar-with-nextjs-not-working */}
-            <Link passHref href="/profile">
+            <Link passHref href="/details">
               <Nav.Link>Profile</Nav.Link>
             </Link>
             <Link passHref href="/posts">
