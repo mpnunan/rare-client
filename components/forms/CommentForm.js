@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Form } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { createComment, updateComment } from '../../utils/data/commentRequests';
 
 const iniitialState = {
@@ -64,6 +64,9 @@ export default function CommentForm({
           required
         />
       </Form.Group>
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
     </Form>
   );
 }
