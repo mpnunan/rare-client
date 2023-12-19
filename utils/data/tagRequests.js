@@ -20,9 +20,21 @@ const createPostTag = async (payload) => {
   return postTag.data;
 };
 
+const updateTag = async (id, payload) => {
+  const tag = await rare.put(`/tags/${id}`, payload);
+  return tag.data;
+};
+
+const deleteTag = async (id) => {
+  const tag = await rare.delete(`/tags/${id}`);
+  return tag.data;
+};
+
 export {
   getAllTags,
   getSingleTag,
   createTag,
+  updateTag,
+  deleteTag,
   createPostTag,
 };
