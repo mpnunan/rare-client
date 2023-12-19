@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Form } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { createPost, updatePost } from '../../utils/data/postRequests';
 
 const initialState = {
@@ -87,6 +87,9 @@ export default function PostForm({
           required
         />
       </Form.Group>
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
     </Form>
 
   );

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { Form } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { createTag } from '../../utils/data/tagRequests';
 
 const initialDescription = {
@@ -36,6 +36,9 @@ export default function TagForm() {
           required
         />
       </Form.Group>
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
     </Form>
   );
 }
