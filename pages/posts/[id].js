@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { Image } from 'react-bootstrap';
+import Link from 'next/link';
 import { getSinglePost } from '../../utils/data/postRequests';
 import { useAuth } from '../../utils/context/authContext';
 import Comment from '../../components/comments/Comment';
@@ -31,6 +32,9 @@ function ViewPost() {
       <Head>
         <title>{postDetails?.title}</title>
       </Head>
+      <>
+        <Link passHref href={`/posts/edit/${id}`}>Update Post</Link>
+      </>
       <div className="mt-5 d-flex flex-wrap post-details-cont">
         <div className="d-flex flex-column post-details-cont" />
         <div className="text-black ms-5 details">
