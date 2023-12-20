@@ -48,9 +48,9 @@ export default function CommentForm({
       post: postId,
     };
     if (id) {
-      updateComment(id, commentDataToSend).then(() => router.push('/'));
+      updateComment(id, commentDataToSend).then(() => router.push(`/posts/${postId}`));
     } else {
-      createComment(commentDataToSend).then(() => router.push('/'));
+      createComment(commentDataToSend).then(() => router.push(`/posts/${postId}`));
     }
   };
 
